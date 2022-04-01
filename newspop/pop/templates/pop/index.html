@@ -1,0 +1,9 @@
+{% if latest_article_list %}
+    <ul>
+    {% for article in latest_article_list %}
+        <li><a href="/pop/{{ article.id }}">({{ article.num_replies }} Comments) [{{article.date_created.year}}, {{article.date_created.month}}, {{article.date_created.day}}] {{ article.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No articles found.</p>
+{% endif %}
