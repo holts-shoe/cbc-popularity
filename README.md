@@ -15,6 +15,8 @@ Todo
 
 ✔️ Make basic front-end
 
+❌ Add many more records
+
 ❌ Host online
 
 ❌ Make fancy front-end
