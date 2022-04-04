@@ -1,5 +1,5 @@
 # News-Popularity
-Analyzing the most popular news for a given timeframe
+Analyzing what the most popular news was
 
 Todo
 
