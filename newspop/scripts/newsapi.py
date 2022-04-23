@@ -64,7 +64,7 @@ def run(*args):
     cbc = API()
     #article_url = 'https://www.cbc.ca/news/business/green-bond-explainer-1.6394756'
     #print(cbc.get_article(article_url))
-    dates = date_range()[28:60]
+    dates = date_range()#[:50]
     for date in dates:
         urls = all_search_results(date)
         print(f'URLS: {urls}')
@@ -87,3 +87,4 @@ def run(*args):
                     image_url=a['image_url'])
 
 print('starting')
+#run with: manage.py runscript newsapi

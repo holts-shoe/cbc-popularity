@@ -3,7 +3,7 @@ import datetime
 
 def date_range():
     dates = []
-    date = datetime.date(2021,1,1)
+    date = datetime.date(2021,5,13)
     while date != datetime.date(2022,1,1):
         dates.append(date)
         date = date + datetime.timedelta(days=1)

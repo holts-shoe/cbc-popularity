@@ -45,15 +45,32 @@ img {
 .article_author {
 	margin: 0;
 }
+select {
+	font-size: 16px;
+	font-family: 'Nunito', sans-serif;
+}
+label {
+	font-size: 16px;
+}
+a {
+	text-decoration: none;
+}
+.page_title {
+	color: red;
+}
+.page_title a:visited {
+	color: red;
+}
 </style>
 
 </head>
 <body>
-<h1>Top CBC Articles</h1>
+<h1 class="page_title"><a href="/pop/">Top CBC Articles</a></h1>
 <form action="">
-	<label for="year">Year:</label>
+	<span>Articles from...</span>
+	<label for="year"></label>
 	<select name="year" id="year" onchange="this.form.submit()">
-		<option value="">All</option>
+		<option value="">All years</option>
 		{% for year in years %}
 			{% if year|slugify == selected_year|slugify %}
 				<option value="{{year}}" selected>{{year}}</option>
@@ -62,9 +79,9 @@ img {
 			{% endif %}
 		{% endfor %}
 	</select>
-	<label for="month">Month:</label>
+	<label for="month"></label>
 	<select name="month" id="month" onchange="this.form.submit()">
-		<option value="">All</option>
+		<option value="">All months</option>
 		{% for month_value, month_string in months.items %}
 			{% if month_value|slugify == selected_month|slugify %}
 				<option value="{{month_value}}" selected>{{month_string}}</option>
