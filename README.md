@@ -1,5 +1,5 @@
 # News-Popularity
-Analyzing what the most popular news was
+Searching for the most popular news articles (as rated by number of comments) in Canada via CBC (largest Canadian news organization)
 
 Todo
 
