@@ -4,6 +4,7 @@ import datetime
 from pop.models import Article
 from django.utils import timezone
 import re
+from scripts.searchapi import *
 
 class API():
     def __init__(self):
@@ -58,15 +59,16 @@ class API():
             for node in response['data'][category]['nodes']:
                 urls.append(node['url'])
         return urls
+
 def run(*args):
     cbc = API()
     #article_url = 'https://www.cbc.ca/news/business/green-bond-explainer-1.6394756'
     #print(cbc.get_article(article_url))
-    urls = []
-    for page in range (1,10000):
-        print(page)
-        page_urls = cbc.get_search_urls(page)
-        for url in page_urls:
+    dates = date_range()[28:60]
+    for date in dates:
+        urls = all_search_results(date)
+        print(f'URLS: {urls}')
+        for url in urls:
             print(url)
             a = cbc.get_article(url)
             print(a)
@@ -74,7 +76,10 @@ def run(*args):
                 if len(Article.objects.filter(full_page_url=a['full_page_url'])) > 0:
                     print('already in database')
                 else:
-                    Article.objects.create(full_page_url=a['full_page_url'],
+                    f_p_u = a['full_page_url']
+                    if a['full_page_url'] == None:
+                        f_p_u = url                        
+                    Article.objects.create(full_page_url=f_p_u,
                     title=a['title'],
                     description=a['description'],
                     date_created=a['date_created'],

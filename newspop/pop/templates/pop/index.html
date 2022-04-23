@@ -1,9 +1,98 @@
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,900;1,600&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap" rel="stylesheet">
+
+<style>
+body {
+	font-family: 'Nunito', sans-serif;
+	
+}
+img {
+	width: 100px;
+}
+.article_row {
+	height: 70px;
+	width: 1200px;
+	padding: 1px;
+	margin-bottom: 1px;
+	display: flex;
+	align-items:center;
+	border: 1px solid #e5e5e5;
+	border-radius: 16px;
+}
+.article_row:hover {
+  	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+.article_data {
+	padding: 4px;
+}
+.rank {
+	font-style: italic;
+	font-size: 18px;
+	width: 20px;
+	text-align: center;
+}
+.comments {
+	font-weight: bold;
+	width: 48px;
+	text-align: center;
+}
+
+.article_date {
+	margin: 0;
+}
+.article_author {
+	margin: 0;
+}
+</style>
+
+</head>
+<body>
+<h1>Top CBC Articles</h1>
+<form action="">
+	<label for="year">Year:</label>
+	<select name="year" id="year" onchange="this.form.submit()">
+		<option value="">All</option>
+		{% for year in years %}
+			{% if year|slugify == selected_year|slugify %}
+				<option value="{{year}}" selected>{{year}}</option>
+			{% else %}
+				<option value="{{year}}">{{year}}</option>
+			{% endif %}
+		{% endfor %}
+	</select>
+	<label for="month">Month:</label>
+	<select name="month" id="month" onchange="this.form.submit()">
+		<option value="">All</option>
+		{% for month_value, month_string in months.items %}
+			{% if month_value|slugify == selected_month|slugify %}
+				<option value="{{month_value}}" selected>{{month_string}}</option>
+			{% else %}
+				<option value="{{month_value}}">{{month_string}}</option>
+			{% endif %}
+		{% endfor %}
+	</select>
+</form>
+
 {% if latest_article_list %}
-    <ul>
-    {% for article in latest_article_list %}
-        <li><a href="/pop/{{ article.id }}">({{ article.num_replies }} Comments) [{{article.date_created.year}}, {{article.date_created.month}}, {{article.date_created.day}}] {{ article.title }}</a></li>
-    {% endfor %}
-    </ul>
+<div class="article_table">
+	{% for article in latest_article_list %}
+	<div class="article_row">
+		<span class="article_data rank">{{ forloop.counter }}</span>
+		<div class="article_data comments" title="{{article.num_replies}} comments">{{ article.num_replies }}</div>
+		<img class="article_data thumbnail" src="{{ article.image_url }}">
+		<div class="article_data section">
+			<a class="article_title" href="{{ article.full_page_url }}">{{ article.title|slice:':-11'}}
+</a>
+			<p class="article_date">{{ article.date_created|date:"Y, M d" }}</p>
+			<p class="article_author">-</p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
 {% else %}
     <p>No articles found.</p>
 {% endif %}
+
+</body>
