@@ -1,5 +1,5 @@
 # News-Popularity
-Analyzing the most popular news for a given timeframe
+Analyzing what the most popular news was
 
 Todo
 
@@ -14,6 +14,8 @@ Todo
 ✔️ Write data from script to django database
 
 ✔️ Make basic front-end
+
+❌ Add many more records
 
 ❌ Host online
 
