@@ -19,4 +19,4 @@ Todo
 
 ❌ Host online
 
-❌ Make fancy front-end
+✔️ Make fancy front-end
