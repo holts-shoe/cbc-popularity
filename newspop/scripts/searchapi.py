@@ -3,8 +3,8 @@ import datetime
 
 def date_range():
     dates = []
-    date = datetime.date(2021,5,13)
-    while date != datetime.date(2022,1,1):
+    date = datetime.date(2022,4,6)
+    while date != datetime.date(2022,4,17):
         dates.append(date)
         date = date + datetime.timedelta(days=1)
     return dates
@@ -35,5 +35,6 @@ def all_search_results(date):
         print(f'{date} PAGE_ENDS: {page_end}')
         for page_start in range(100,page_end,100):
             results = get_search_results(date_string,page_start)
-            urls = urls + [link['link'] for link in results['organic_results']]
+            if 'organic_results' in results:
+                urls = urls + [link['link'] for link in results['organic_results']]
     return urls
