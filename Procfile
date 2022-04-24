@@ -1,1 +1,0 @@
-web: gunicorn newspop.wsgi --log-file -
