@@ -1,1 +1,1 @@
-web: gunicorn newspop.wsgi --log-file -
+web: gunicorn --chdir newspop newspop.wsgi --log-file -
