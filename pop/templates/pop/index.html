@@ -101,6 +101,12 @@ form > * {
 	height: 20px;
 	width: 20px;	
 }
+.gh svg {
+	float: right;
+}
+.gh a {
+	color: red;
+}
 
 </style>
 
@@ -134,7 +140,12 @@ form > * {
 			{% endfor %}
 		</select>
 	</form>
-</div>
+	<a class="gh" href="https://github.com/holts-shoe/cbc-popularity">
+		<svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+			<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+		</svg>
+	</a>
+	</div>
 </div>
 
 {% if latest_article_list %}
@@ -143,7 +154,7 @@ form > * {
 	<div class="article_row">
 		<span class="article_data rank">{{ forloop.counter }}</span>
 		<div class="article_data comments" title="{{article.num_replies}} comments">{{ article.num_replies }}
-			<span class="commentCount-icon"><svg class="comments_svg" viewBox="0 0 32 32" focusable="false" role="img" aria-label="Open for comments"><path d="M20.95,17H11a1,1,0,0,0,0,2h10a1,1,0,0,0,0-2Zm2-6H9a1,1,0,0,0,0,2h14a1,1,0,0,0,0-2ZM16,0C7.14,0,0,6.26,0,14a12.55,12.55,0,0,0,6,10.9v7.07l7-4.25a18.71,18.71,0,0,0,3,.25c8.82,0,16-6.25,16-14S24.78,0,16,0Zm0,25.95a16.29,16.29,0,0,1-3.37-.37l-4.7,2.82.06-4.63A11.56,11.56,0,0,1,2,14C2,7.36,8.24,2,16,2s14,5.36,14,12-6.26,12-14,12Zm0,0"></path></svg></span>
+			<span class="commentCount-icon"><svg viewBox="0 0 32 32" focusable="false" role="img" aria-label="Open for comments"><path d="M20.95,17H11a1,1,0,0,0,0,2h10a1,1,0,0,0,0-2Zm2-6H9a1,1,0,0,0,0,2h14a1,1,0,0,0,0-2ZM16,0C7.14,0,0,6.26,0,14a12.55,12.55,0,0,0,6,10.9v7.07l7-4.25a18.71,18.71,0,0,0,3,.25c8.82,0,16-6.25,16-14S24.78,0,16,0Zm0,25.95a16.29,16.29,0,0,1-3.37-.37l-4.7,2.82.06-4.63A11.56,11.56,0,0,1,2,14C2,7.36,8.24,2,16,2s14,5.36,14,12-6.26,12-14,12Zm0,0"></path></svg></span>
 		</div>
 		<a class="article_title" href="{{ article.full_page_url }}">
 			<img class="article_data thumbnail" src="{% static '/images/' %}{{ article.image_url|local_image }}">
