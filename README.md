@@ -1,21 +1,21 @@
-# News-Popularity
-Searching for the most popular news articles (as rated by number of comments) in Canada via CBC (largest Canadian news organization)
+# Top News CBC
+https://topnewscbc.herokuapp.com/ Top Commented CBC News Articles by month/year of your choice.
+![image](https://user-images.githubusercontent.com/21085160/165142093-6bd823a5-1b2d-4b17-8760-4f085f7eb8ea.png)
 
-Todo
 
-✔️ Figure out cbc api
+# Features / Todo
 
-✔️ Write script to get api data
+✔️ Reverse engineer CBC Article and Search API
 
-✔️ Create django project database models (abstraction)
+✔️ Write script to batch CBC Article data to local database
 
-✔️ Make script run once every day (host it on a server)
+❌ Make script run once every day (host it on a server)
 
-✔️ Write data from script to django database
+✔️ Create django project, database models
 
 ✔️ Make basic front-end
 
-✔️ Add many more records
+✔️ Add CBC Article records from 2021-2022
 
 ✔️ Host online
 
