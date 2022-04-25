@@ -3,9 +3,9 @@ Searching for the most popular news articles (as rated by number of comments) in
 
 Todo
 
-✔️ Figure out cbc api (web debugging)
+✔️ Figure out cbc api
 
-✔️ Write script to scrape multiple cbc articles
+✔️ Write script to get api data
 
 ✔️ Create django project database models (abstraction)
 
@@ -15,8 +15,10 @@ Todo
 
 ✔️ Make basic front-end
 
-❌ Add many more records
+✔️ Add many more records
 
-❌ Host online
+✔️ Host online
 
-✔️ Make fancy front-end
+✔️ Make better front-end
+
+❌ Add data from 2015-2020
