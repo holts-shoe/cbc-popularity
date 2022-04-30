@@ -16,7 +16,7 @@ def index(request):
     else:
         articles = Article.objects.all()
     latest_article_list = articles.order_by('-num_replies')[:50]
-    years = list(range(2022,2020,-1))
+    years = list(range(2022,2017,-1))
     months = {month: datetime.date(1900, month, 1).strftime('%B') for month in range(1,12+1)}
     context = {'latest_article_list':latest_article_list, 'years': years, 'months': months, 'selected_year': year, 'selected_month': month}
     return render(request, 'pop/index.html', context)

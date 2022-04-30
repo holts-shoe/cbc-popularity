@@ -5,6 +5,8 @@ from pop.models import Article
 from django.utils import timezone
 import re
 from scripts.searchapi import *
+from scripts.images import *
+from bs4 import BeautifulSoup
 
 class API():
     def __init__(self):
@@ -60,6 +62,14 @@ class API():
                 urls.append(node['url'])
         return urls
 
+def get_author(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text)
+    author_name = soup.find('span',attrs={'class':'authorText'}).find('a').text
+    author_url = 'https://www.cbc.ca' + soup.find('span',attrs={'class':'authorText'}).find('a')['href']
+
+
+
 def run(*args):
     cbc = API()
     #article_url = 'https://www.cbc.ca/news/business/green-bond-explainer-1.6394756'
@@ -85,6 +95,7 @@ def run(*args):
                     date_created=a['date_created'],
                     num_replies= a['num_replies'],
                     image_url=a['image_url'])
+                    #image_download(a['image_url'])
 
 print('starting')
 #run with: manage.py runscript newsapi
