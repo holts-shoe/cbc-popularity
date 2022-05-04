@@ -13,7 +13,7 @@ def image_download(image_url):
         print('exists')
 
 def run(*args):
-    for year in [2018,2019,2020]:
+    for year in range(2015,2018+1):
         for month in range(1,12+1):
             if year == 2022 and month == 5:
                 break
