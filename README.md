@@ -1,5 +1,5 @@
 # Top News CBC
-https://topnewscbc.herokuapp.com Top Commented CBC News Articles by month/year.
+https://news.up.railway.app/ Top Commented CBC News Articles by month/year.
 ![image](https://user-images.githubusercontent.com/21085160/165142093-6bd823a5-1b2d-4b17-8760-4f085f7eb8ea.png)
 
 
@@ -21,4 +21,4 @@ https://topnewscbc.herokuapp.com Top Commented CBC News Articles by month/year.
 
 ✔️ Make better front-end
 
-❌ Add data from 2015-2020
+✔️ Add data from 2015-2020
