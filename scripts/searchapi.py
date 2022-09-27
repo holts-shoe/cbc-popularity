@@ -1,5 +1,7 @@
 from serpapi import GoogleSearch
 import datetime
+from decouple import config
+from pytz import utc
 
 def date_range():
     dates = []
@@ -9,10 +11,13 @@ def date_range():
         date = date + datetime.timedelta(days=1)
     return dates
 
+def get_prior_date():
+    return datetime.datetime.now(utc).date() - datetime.timedelta(days=7)
+
 def get_search_results(date_string,page_start):
     print(date_string,'PAGE START', page_start)
     search = GoogleSearch({
-    "api_key": "a7aaae01a1b767c1e3e0269cd8cf432236f216f4e421ef5ae18b28dd755e8d93",
+    "api_key": config('SERP_API_KEY'),
     "engine": "google",
     "q": "site:https://www.cbc.ca/news",
     "google_domain": "google.com",

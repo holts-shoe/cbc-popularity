@@ -68,34 +68,37 @@ def get_author(url):
     author_name = soup.find('span',attrs={'class':'authorText'}).find('a').text
     author_url = 'https://www.cbc.ca' + soup.find('span',attrs={'class':'authorText'}).find('a')['href']
 
-
-
 def run(*args):
-    cbc = API()
-    #article_url = 'https://www.cbc.ca/news/business/green-bond-explainer-1.6394756'
-    #print(cbc.get_article(article_url))
     dates = date_range()#[:50]
     for date in dates:
         urls = all_search_results(date)
         print(f'URLS: {urls}')
-        for url in urls:
-            print(url)
-            a = cbc.get_article(url)
-            print(a)
-            if a:
-                if len(Article.objects.filter(full_page_url=a['full_page_url'])) > 0:
-                    print('already in database')
-                else:
-                    f_p_u = a['full_page_url']
-                    if a['full_page_url'] == None:
-                        f_p_u = url                        
-                    Article.objects.create(full_page_url=f_p_u,
-                    title=a['title'],
-                    description=a['description'],
-                    date_created=a['date_created'],
-                    num_replies= a['num_replies'],
-                    image_url=a['image_url'])
-                    #image_download(a['image_url'])
+        download_article_data()
+
+def download_article_data(date):
+    cbc = API()
+    #article_url = 'https://www.cbc.ca/news/business/green-bond-explainer-1.6394756'
+    #print(cbc.get_article(article_url))
+    urls = all_search_results(date)
+    print(f'URLS: {urls}')
+    for url in urls:
+        print(url)
+        a = cbc.get_article(url)
+        print(a)
+        if a: #if valid article
+            if len(Article.objects.filter(full_page_url=a['full_page_url'])) > 0:
+                print('already in database')
+            else:
+                f_p_u = a['full_page_url']
+                if a['full_page_url'] == None:
+                    f_p_u = url                        
+                Article.objects.create(full_page_url=f_p_u,
+                title = a['title'],
+                description = a['description'],
+                date_created = a['date_created'],
+                num_replies = a['num_replies'],
+                image_url = a['image_url'])
+                #image_download(a['image_url'])
 
 print('starting')
 #run with: manage.py runscript newsapi
